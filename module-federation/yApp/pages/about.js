@@ -1,6 +1,8 @@
-import { Box, Typography } from "@mui/material";
+import React from "react";
+import Head from "next/head";
+import { Box, Button, Typography} from "@mui/material";
 
-export default function About() {
+const About = () => {
   return (
     <>
       <Box
@@ -15,5 +17,7 @@ export default function About() {
       </Box>
     </>
   );
-}
+};
 
+
+export default About;

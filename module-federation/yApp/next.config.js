@@ -9,11 +9,11 @@ module.exports = {
         new NextFederationPlugin({
           name: 'yApp',
           remotes: {
-            xApp: `xApp@http://localhost:3001/_next/static/chunks/remoteEntry.js`,
+            xApp: `xApp@http://localhost:3000/_next/static/chunks/remoteEntry.js`,
           },
           filename: 'static/chunks/remoteEntry.js',
           exposes: {
-            './about': './components/about.js',
+            './about': './pages/about',
             './yApp': './pages/yApp',
             './pages-map': './pages-map.js',
           },
