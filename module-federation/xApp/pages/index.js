@@ -3,7 +3,12 @@ import Head from "next/head";
 import ClearIcon from "@mui/icons-material/Clear";
 import { Box, Button } from "@mui/material";
 import Divider from "@mui/material/Divider";
+import dynamic from "next/dynamic";
 
+let RemoteApp = () => null;
+if (process.browser) {
+  RemoteApp = dynamic(() => import("yApp/"));
+}
 
 const Home = () => {
   const [isYModalOpen, setYModalOpen] = useState(false);
@@ -25,14 +30,16 @@ const Home = () => {
 
       <div className="hero">
         <h1 className="title">Welcome to X-application </h1>
-        <Box sx={{
-          width:'100%',
-          textAlign:'center',
-          marginTop:'20rem'
-        }}>
-        <Button  onClick={openYModal} variant="contained">
-          Y-application
-        </Button>
+        <Box
+          sx={{
+            width: "100%",
+            textAlign: "center",
+            marginTop: "20rem",
+          }}
+        >
+          <Button onClick={openYModal} variant="contained">
+            Y-application
+          </Button>
         </Box>
         {isYModalOpen && (
           <Box
@@ -70,10 +77,7 @@ const Home = () => {
               }}
               textAlign="left"
             ></Divider>
-            <iframe
-              src="http://localhost:3000/yApp"
-              style={{ width: "100%", height: "100%" }}
-            ></iframe>
+            <RemoteApp />
           </Box>
         )}
       </div>
@@ -94,7 +98,6 @@ const Home = () => {
         .description {
           text-align: center;
         }
-   
       `}</style>
     </div>
   );
